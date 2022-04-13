@@ -1,0 +1,102 @@
+{
+    "name": "Auto FFMPEG",
+    "description": "Automatic FFMPEG video processing",
+    "author": "Benoit Leveugle",
+    "licensed": false,
+    "classifications": [
+        "Software Development"
+    ],
+    "machines": [
+        "*"
+    ],
+    "vault-types": [
+        "FILE",
+        "BLOCK",
+        "BLOCK_ARRAY",
+        "OBJECT"
+    ],
+    "commands": {
+        "Batch": {
+            "path": "/bin/ffmpeg",
+            "interactive": false,
+            "name": "FFMPEG Batch",
+            "description": "Launch FFMPEG using selected parameters",
+            "parameters": {
+                "-i": {
+                    "name": "-i",
+                    "description": "-i",
+                    "type": "CONST",
+                    "value": "-i",
+                    "positional": true,
+                    "required": true
+                },
+                "input_video": {
+                    "positional": true,
+                    "required": true,
+                    "type": "FILE",
+                    "name": "Converge case folder, select any file in the case directory."
+                },
+                "-map": {
+                    "name": "-map 0",
+                    "description": "-map 0",
+                    "type": "CONST",
+                    "value": "-map 0",
+                    "positional": true,
+                    "required": true
+                },
+                "-cv": {
+                    "name": "-c:v",
+                    "description": "-c:v",
+                    "type": "CONST",
+                    "value": "-c:v",
+                    "positional": true,
+                    "required": true
+                },
+                "video_codec": {
+                    "name": "video_codec",
+                    "description": "video_codec",
+                    "type": "selection",
+                    "values": ["libx265","libx264"],
+                    "positional": true,
+                    "required": true
+                },
+                "-ca": {
+                    "name": "-c:a",
+                    "description": "-c:a",
+                    "type": "CONST",
+                    "value": "-c:a",
+                    "positional": true,
+                    "required": true
+                },
+                "audio_codec": {
+                    "name": "audio_codec",
+                    "description": "audio_codec",
+                    "type": "selection",
+                    "values": ["libvorbis -qscale:a 5 -ac 2","libvorbis","copy"],
+                    "positional": true,
+                    "required": true
+                },
+                "-cs": {
+                    "name": "-c:s",
+                    "description": "-c:s",
+                    "type": "CONST",
+                    "value": "-c:s copy",
+                    "positional": true,
+                    "required": true
+                },
+                "output_file": {
+                    "name": "output_file",
+                    "description": "output file name",
+                    "type": "STR",
+                    "value": "",
+                    "positional": true,
+                    "required": true
+                }
+            }
+        }
+    },
+    "image": {
+        "type": "image/png",
+        "data": ""
+    }
+}
